@@ -10,8 +10,15 @@ const getJob = (req, res) => {
 //@access public
 
 const createJob = (req, res) => {
+  console.log("The request body is:", req.body);
+  //Error handling if no data is uploaded
+  const { jobid, companyid, jobtitle, joblocation } = req.body;
+  if (!jobid || !companyid || !jobtitle || !joblocation) {
+    res.status(400);
+    throw new Error("All fields are Mandatory");
+  }
   res.status(201).json({ message: "Create New Job" });
-};
+}; 
 //@desc Get single Job
 //@route GEt api/jobs/:id
 //@access public
