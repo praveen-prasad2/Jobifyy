@@ -5,9 +5,7 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-app.get('/api/jobs',(req,res)=>{
-    res.status(200).json({message:"Get All Jobs"})
-})
+app.use("/api/jobs",require("./routes.js/jobRoute"))
 
 app.listen(port, () => {
   console.log("Server Running");
